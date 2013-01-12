@@ -11,6 +11,8 @@ There were 2 simultaneous hackathons happening: ours in San Francisco and anothe
 who would then have an extra 24 hours to polish their project and present it in the finals. We managed to come in 3rd in the SF round and 
 pitched our project to Dave McClure and others. Overall it was an awesome weekend and we all learned a lot. 
 
-[This is the demo video we submitted which explains the basic idea we had](http://www.youtube.com/watch?v=hCxpE_so2k4)
+[This is the demo video we submitted which explains our basic idea.](http://www.youtube.com/watch?v=hCxpE_so2k4)
 
 We originally had our code in a private repo - I've created a public version of it here with some of the config files and passwords/keys removed.
+
+![Just 3 guys and we're having a good time](http://peterkinmond.github.com/brandgauge/images/team_brandgauge.jpg)
