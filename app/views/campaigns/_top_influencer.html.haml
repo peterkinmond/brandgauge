@@ -1,0 +1,13 @@
+%tr{ :style => 'height:80px'}
+  %td{ :style => 'width:80px'}
+    %div
+      Klout:
+      %h2{ :style => 'color: #E44600'}=top_influencer.klout_score
+  %td{ :style => 'width:60px'}
+    = link_to "http://kcdn.klout.com/#{top_influencer.user_screen_name}", :target => '_blank' do
+      %img{ :src => top_influencer.user_profile_image_url, :style => 'width: 48px; height: 48px' }
+  %td
+    %div
+      =link_to top_influencer.user_real_name, "http://kcdn.klout.com/#{top_influencer.user_screen_name}", :target => '_blank'
+      %strong @#{top_influencer.user_screen_name}
+    %div= top_influencer.content

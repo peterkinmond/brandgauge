@@ -1,0 +1,43 @@
+-#%a.btn.btn-primary.btn-small.pull-right{ :"data-toggle" => "modal", :href => "#myModal"}
+  -#New Campaign
+
+%h1#brand_name
+  = @current_user.brand.name
+
+%h3
+  Campaigns
+%table#campaign_table{ :class => 'table table-bordered' }
+  %thead
+    %tr
+      %th
+        Overall Sentiment
+      %th
+        Campaign Name
+  %tbody
+    - @campaigns.each do |campaign|
+      %tr{"onClick" => "javascript: window.location='#{brand_campaign_path(current_user.brand, campaign)}';" }
+        %td
+          - if (campaign.lift > 0)
+            %img.arrowed{ :src => '/images/up_arrow.png' }
+          - if (campaign.lift < 0)
+            %img.arrowed{ :src => '/images/down_arrow.png' }
+          - if (campaign.lift == 0)
+            %img.arrowed{ :src => '/images/neutral_arrow.png' }
+        %td
+          %h3
+            = campaign.name
+%h3#brand_sentiment_chart_title
+  Overall Brand Sentiment
+#brand_sentiment_by_day_container
+  #brand_sentiment_by_day_chart{:'data-brand_sentiment_by_day' => @current_user.brand.sentiment_by_day}
+
+#myModal.modal.hide.fade
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %h3 Create Campaign
+  .modal-body
+    = form_for [current_user.brand, Campaign.new] do |f|
+      = f.hidden_field :brand_id, :value => current_user.brand.id
+      = f.text_field :name, :size => 100, :placeholder => 'Name', :style => "height:20px;width:400px;"
+      = f.text_field :keyphrase, :size => 100, :placeholder => 'Key word or phrase', :style => "height:20px;width:400px;"
+      = f.submit "Add", :class => 'btn btn-primary', :style => 'margin-left: 20px;'

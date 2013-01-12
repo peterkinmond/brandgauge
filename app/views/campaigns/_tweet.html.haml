@@ -1,0 +1,25 @@
+%tr{ :style => 'height:80px'}
+  %td{:style => 'width:100px'}
+    %div{ :align => 'center'}
+      %div{:style => "height: 10px"}
+        - if tweet.sentiment > 0
+          %img.arrowed{ :src => "/images/up_arrow.png"}
+        - elsif tweet.sentiment < 0
+          %img.arrowed{ :src => "/images/down_arrow.png"}
+        - else
+          %img.arrowed{ :src => "/images/neutral_arrow.png"}
+  %td
+    %div{:style => 'width:60px; float: left'}
+      = link_to "http://twitter.com/#{tweet.user_screen_name}", :target => '_blank' do
+        %img{ :src => tweet.user_profile_image_url, :style => 'width: 48px; height: 48px' }
+    %div{:style => "float: left"}
+      %div
+        =link_to tweet.user_real_name, "http://twitter.com/#{tweet.user_screen_name}", :target => '_blank'
+        %strong @#{tweet.user_screen_name}
+        %small #{time_ago_in_words(tweet.tweeted_at)} ago
+      %div= tweet.content
+      %div
+        %strong Followers:
+        =tweet.followers_count
+        %strong Klout:
+        =tweet.klout_score

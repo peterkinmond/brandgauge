@@ -1,0 +1,57 @@
+%h1
+  = "#{@campaign.name} "
+  %small
+    = "by #{current_user.brand.name.titlecase}"
+%ul#campaign_show_tab.nav.nav-tabs
+  %li
+    %a{:href => "#summary", :"data-toggle" => "tab"} Summary
+  %li
+    %a{:href => "#tweet_volume", :"data-toggle" => "tab"} Campaign Tweet Volume
+  %li
+    %a{:href => "#top_influencers", :"data-toggle" => "tab"} Top Influencers
+  %li
+    %a{:href => "#recent_tweets", :"data-toggle" => "tab"} Recent Tweets
+
+.tab-content
+  #summary.tab-pane.fade.active.in
+    %center
+      %h2
+        Campaign sentiment
+    #brand_sentiment_by_day_container
+      #sentiment_by_day_chart{:'data-sentiment_by_day' => @campaign.sentiment_by_day}
+
+  #tweet_volume.tab-pane.fade
+    %h2
+      Total Volume of Tweets
+    #live_campaign_tweet_volume_container
+      #live_campaign_tweet_volume_chart{:'data-campaign_id' => @campaign.id}
+
+  #recent_tweets.tab-pane.fade
+    %h2
+      = "Recent Tweets"
+    %table{:class => "table", :style => "margin-top: 20px;"}
+      %thead
+        %tr
+          %td{"width" => "100px"}
+            %h3
+              Sentiment
+          %td
+            %h3
+              Tweet
+      %tbody
+        =render :partial => 'tweet', :collection => @campaign.recent_tweets
+
+  #top_influencers.tab-pane.fade
+    %h2.center
+      = "Top Influencers"
+    %table{:class => "table", :style => "margin-top:20px;"}
+      %thead
+        %tr
+          %td{"width" => "100px"}
+            %h3
+              Influence
+          %td
+            %h3
+              Message
+      %tbody
+        =render :partial => 'top_influencer', :collection => @campaign.top_influencers
