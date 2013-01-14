@@ -17,4 +17,4 @@ pitched our project to Dave McClure and others. Overall it was an awesome weeken
 
 We originally had our code in a private repo - I've created a public version of it here with some of the config files and passwords/keys removed.
 
-![Just 3 guys and we're having a good time](http://peterkinmond.github.com/brandgauge/images/team_brandgauge.jpg)
+![Just 3 guys and we're having a good time](https://raw.github.com/peterkinmond/brandgauge/master/public/images/team_brandgauge.jpg)
